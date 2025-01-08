@@ -1,0 +1,14 @@
+Inversion of control is a design principle used in software development in java using spring boot,
+till now we were the one who were creating objects for our classes right but now these can be handled by the spring
+using the IoC design principle
+for example have you ever seen a object for (Controller) class No right so the object for controller class are created
+by the spring using thr IoC.
+And also the life cycle of the object is managed by the spring also this is a feature of framework
+
+
+Why is it called Inversion of Control
+-> before we used to have the control of the object but now the framework has the control so the
+   Control has been inverted from the client to the framework this is why it is called Inversion of Control.
+
+Inversion of Control -> before we used to create the object now it is managed by the framework so the control has
+been inverted

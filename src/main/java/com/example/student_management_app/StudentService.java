@@ -15,14 +15,15 @@ public class StudentService {
     }
 
     public Student getStudent(int usn) {
-        return studentRepo.getStudList().get(usn);
+        return studentRepo.getStudList().get(usn); // get(usn) is the HashMap function don't try to find it in the code here
     }
 
     public HashMap<Integer, Student> allStudent() {
         return studentRepo.getStudList();
     }
 
-    public void addStudent(int usn, Student stud) {
+    public String addStudent(int usn, Student stud) {
         studentRepo.addStudent(usn, stud);
+        return "Student Added Successfully";
     }
 }

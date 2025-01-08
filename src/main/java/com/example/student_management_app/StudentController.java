@@ -17,12 +17,6 @@ public class StudentController {
         studService = new StudentService();
     }
 
-//    public StudentController() {
-//        stud.put(1, new Student("Manjunath", 1, 22, "manjunathbhavi@gmail.com", "python"));
-//        stud.put(2, new Student("David", 2, 23, "davidpaul@gmail.com", "AI/ML"));
-//        stud.put(3, new Student("john", 3, 26, "johnpaul@gmail.com", "java"));
-//    }
-
     @GetMapping //this is a annotation, for post it is @PostMapping
     //endpoint -> localhost:8080/students
     public Map<Integer, Student> getAllStudents() {
@@ -36,22 +30,22 @@ public class StudentController {
     }
 
     @GetMapping("/getStudent")
-    //endpoint -> localhost:8080/students?usn=1
+    //endpoint -> localhost:8080/students/getStudent?usn=1
     public Student getStudent(@RequestParam("id") int usn) {
         return studService.getStudent(usn);
     }
 
     // can be used when a user creates a account on our app
     @PostMapping("/add")
-    //endpoint -> localhost:8080/
+    //endpoint -> localhost:8080/students/add with the body for our url
     public String addStudent(@RequestBody Student student){
         studService.addStudent(student.getUsn(), student);
         return "Student Added Successfully";
     }
 
     @PostMapping("/added")
-    public String addStudents(@RequestBody Student stud){
+    // endpoint -> localhost:8080/students/added and give the body for your endpoint in the postman or frontend
+    public void addStudents(@RequestBody Student stud){
         studService.addStudent(stud.getUsn(), stud);
-        return "Added Successfully";
     }
 }

@@ -11,18 +11,22 @@ import java.util.*;
 // endpoint -> localhost:8080/students
 public class StudentController {
 
-    Map<Integer, Student> stud = new HashMap<>(); //data structure to store the data
+    private final StudentService studService;
 
     public StudentController() {
-        stud.put(1, new Student("Manjunath", 1, 22, "manjunathbhavi@gmail.com", "python"));
-        stud.put(2, new Student("David", 2, 23, "davidpaul@gmail.com", "AI/ML"));
-        stud.put(3, new Student("john", 3, 26, "johnpaul@gmail.com", "java"));
+        studService = new StudentService();
     }
+
+//    public StudentController() {
+//        stud.put(1, new Student("Manjunath", 1, 22, "manjunathbhavi@gmail.com", "python"));
+//        stud.put(2, new Student("David", 2, 23, "davidpaul@gmail.com", "AI/ML"));
+//        stud.put(3, new Student("john", 3, 26, "johnpaul@gmail.com", "java"));
+//    }
 
     @GetMapping //this is a annotation, for post it is @PostMapping
     //endpoint -> localhost:8080/students
     public Map<Integer, Student> getAllStudents() {
-        return stud;
+        return studService.allStudent();
     }
 
     @GetMapping("/sayHello") //sayHello is a endpoint
@@ -34,14 +38,20 @@ public class StudentController {
     @GetMapping("/getStudent")
     //endpoint -> localhost:8080/students?usn=1
     public Student getStudent(@RequestParam("id") int usn) {
-        return stud.get(usn);
+        return studService.getStudent(usn);
     }
 
     // can be used when a user creates a account on our app
     @PostMapping("/add")
     //endpoint -> localhost:8080/
     public String addStudent(@RequestBody Student student){
-        stud.put(student.getUsn(), student);
+        studService.addStudent(student.getUsn(), student);
         return "Student Added Successfully";
+    }
+
+    @PostMapping("/added")
+    public String addStudents(@RequestBody Student stud){
+        studService.addStudent(stud.getUsn(), stud);
+        return "Added Successfully";
     }
 }

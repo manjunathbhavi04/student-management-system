@@ -1,12 +1,11 @@
 package com.example.student_management_app;
 // This is a controller where we write the api for our class Student
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.*;
 
+//Controller for endpoints
 @RestController
 @RequestMapping("/students") //initial mapping when our website opens example student.com/students is the initial endpoint for our api to work
 // endpoint -> localhost:8080/students
@@ -32,9 +31,17 @@ public class StudentController {
         return "Hello from the students";
     }
 
-    @GetMapping("/{usn}")
-    //endpoint -> localhost:8080/students/{usn}
-    public Student getStudent(@PathVariable int usn) {
+    @GetMapping("/getStudent")
+    //endpoint -> localhost:8080/students?usn=1
+    public Student getStudent(@RequestParam("id") int usn) {
         return stud.get(usn);
+    }
+
+    // can be used when a user creates a account on our app
+    @PostMapping("/add")
+    //endpoint -> localhost:8080/
+    public String addStudent(@RequestBody Student student){
+        stud.put(student.getUsn(), student);
+        return "Student Added Successfully";
     }
 }

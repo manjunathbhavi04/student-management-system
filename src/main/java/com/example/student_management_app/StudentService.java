@@ -1,6 +1,7 @@
 package com.example.student_management_app;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -10,8 +11,9 @@ public class StudentService {
 
     private final StudentRepository studentRepo;
 
-    public StudentService() {
-        studentRepo = new StudentRepository();
+    @Autowired
+    public StudentService(StudentRepository studentRepo) {
+        this.studentRepo = studentRepo;
     }
 
     public Student getStudent(int usn) {

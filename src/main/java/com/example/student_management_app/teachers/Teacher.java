@@ -1,4 +1,4 @@
-package teachers;
+package com.example.student_management_app.teachers;
 
 public class Teacher {
     private int t_id;

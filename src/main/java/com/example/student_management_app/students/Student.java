@@ -1,4 +1,4 @@
-package com.example.student_management_app;
+package com.example.student_management_app.students;
 
 public class Student {
     private int usn; //primary key

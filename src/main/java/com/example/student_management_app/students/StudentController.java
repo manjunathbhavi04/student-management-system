@@ -1,4 +1,4 @@
-package com.example.student_management_app;
+package com.example.student_management_app.students;
 // This is a controller where we write the api for our class Student
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +21,11 @@ public class StudentController {
         this.studService =  studService;
     }
 
-    @GetMapping //this is a annotation, for post it is @PostMapping
+    @GetMapping //this is an annotation, for post it is @PostMapping
     //endpoint -> localhost:8080/students
-    public ResponseEntity getAllStudents() {
+    public ResponseEntity<Map<Integer, Student>> getAllStudents() {
         Map<Integer, Student> students = studService.allStudent();
-        return new ResponseEntity(students, HttpStatus.OK);
+        return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
     @GetMapping("/sayHello") //sayHello is a endpoint
@@ -36,23 +36,23 @@ public class StudentController {
 
     @GetMapping("/getStudent")
     //endpoint -> localhost:8080/students/getStudent?usn=1
-    public ResponseEntity getStudent(@RequestParam("id") int usn) {
+    public ResponseEntity<Student> getStudent(@RequestParam("id") int usn) { // id is url variable
         Student stud = studService.getStudent(usn);
-        return new ResponseEntity(stud, HttpStatus.OK);
+        return new ResponseEntity<>(stud, HttpStatus.OK);
     }
 
-    // can be used when a user creates a account on our app
-    @PostMapping("/add")
+    // can be used when a user creates an account on our app
+    @PostMapping("/addStudent")
     //endpoint -> localhost:8080/students/add with the body for our url
-    public ResponseEntity addStudent(@RequestBody Student student){
+    public ResponseEntity<String> addStudent(@RequestBody Student student){
         String message = studService.addStudent(student.getUsn(), student);
-        return new ResponseEntity(message, HttpStatus.CREATED);
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 
-    @PostMapping("/added")
+    @PostMapping("/addedStudent")
     // endpoint -> localhost:8080/students/added and give the body for your endpoint in the postman or frontend
-    public ResponseEntity addStudents(@RequestBody Student stud){
+    public ResponseEntity<String> addStudents(@RequestBody Student stud){
         String message = studService.addStudent(stud.getUsn(), stud);
-        return new ResponseEntity(message, HttpStatus.CREATED);
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 }

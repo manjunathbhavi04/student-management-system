@@ -1,4 +1,4 @@
-package com.example.student_management_app;
+package com.example.student_management_app.students;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

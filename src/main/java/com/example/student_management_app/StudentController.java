@@ -23,8 +23,9 @@ public class StudentController {
 
     @GetMapping //this is a annotation, for post it is @PostMapping
     //endpoint -> localhost:8080/students
-    public Map<Integer, Student> getAllStudents() {
-        return studService.allStudent();
+    public ResponseEntity getAllStudents() {
+        Map<Integer, Student> students = studService.allStudent();
+        return new ResponseEntity(students, HttpStatus.OK);
     }
 
     @GetMapping("/sayHello") //sayHello is a endpoint

@@ -2,7 +2,9 @@ package com.example.student_management_app.students;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Repository
 public class StudentRepository {
@@ -17,7 +19,13 @@ public class StudentRepository {
     public HashMap<Integer, Student> getStudList() {
         return studList;
     }
-
+    public List<String> getStudentNames(){
+        List<String> names = new ArrayList<>();
+        for(Student s: studList.values()){
+            names.add(s.getName());
+        }
+        return names;
+    }
     public void addStudent(int usn, Student stud){
         studList.put(usn, stud);
     }

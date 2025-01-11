@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -18,6 +19,10 @@ public class StudentService {
 
     public Student getStudent(int usn) {
         return studentRepo.getStudList().get(usn); // get(usn) is the HashMap function don't try to find it in the code here
+    }
+
+    public List<String> getStudentNames(){
+        return studentRepo.getStudentNames();
     }
 
     public HashMap<Integer, Student> allStudent() {

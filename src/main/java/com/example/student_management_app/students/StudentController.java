@@ -41,6 +41,11 @@ public class StudentController {
         return new ResponseEntity<>(stud, HttpStatus.OK);
     }
 
+    @GetMapping("/studentNames")
+    public ResponseEntity<List<String>> getStudentNames(){
+        return new ResponseEntity<>(studService.getStudentNames(), HttpStatus.FOUND);
+    }
+
     // can be used when a user creates an account on our app
     @PostMapping("/addStudent")
     //endpoint -> localhost:8080/students/add with the body for our url

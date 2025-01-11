@@ -1,9 +1,9 @@
-package com.example.student_management_app.students;
+package com.example.student_management_app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"com.example.student_management_app/students", "com/example/student_management_app/teachers"})
+@SpringBootApplication
 public class StudentManagementAppApplication {
 
 	public static void main(String[] args) {

@@ -46,8 +46,8 @@ public class Teacher {
         return no_of_students;
     }
 
-    public void setNo_of_students(int no_of_students) {
-        this.no_of_students = no_of_students;
+    public void setNo_of_students() {
+        this.no_of_students++;
     }
 
     public String getEmail() {
